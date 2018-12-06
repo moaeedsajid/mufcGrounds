@@ -1,0 +1,52 @@
+---
+title: "Manchester United Grounds"
+date: "December 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(leaflet)
+```
+
+***
+
+Not another map,  What will this tell me about what is probably the biggest football club in the world?    
+  
+1. The location and name of every ground used by the club  
+2. Circles representing the relative capcaity at each ground 
+3. Click each icon to learn more about each of the grounds  
+4. Most importantly a link to the online shop so you can spoil yourself or a loved one  
+
+***
+
+
+```{r, echo=FALSE,fig.align='center'}
+
+mufcSites <- c(
+        "<a href='hhttps://en.wikipedia.org/wiki/North_Road_(Manchester)'>(1878-1893) North Road Capacity 14,000</a>",
+        "<a href='https://en.wikipedia.org/wiki/Bank_Street_(football_ground)'>(1893-1910) Bank Street Capacity 50,000</a>",
+                "<a href='https://en.wikipedia.org/wiki/Old_Trafford'>(1910 - Now) Old Trafford Capacity 76,000</a>",
+                "<a href='http://aklam.io/p2ye17'> Online Gift Shop</a>"
+                )
+
+mufcIcon <- makeIcon(
+        iconUrl = "https://www.manutd.com/AssetPicker/images/0/0/10/168/698529/Web_crest1528212747590.png",
+        iconWidth = 31*215/230, iconHeight = 31, iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+
+mufcLatLong <- data.frame(
+        lat = c(53.503611, 53.485278,53.4631249,53.48),
+        lng = c(-2.198889, -2.189444,-2.2908749,-2.23)
+)
+
+capacity <- c(14,50,76,0)
+
+mufcLatLong %>%
+        leaflet() %>%
+        addTiles() %>%
+        setView(lat=53.48,lng=-2.23,zoom=12) %>%
+        addMarkers(icon = mufcIcon, popup = mufcSites,clusterOptions = markerClusterOptions()) %>%
+        addCircles(lng= ~lng, lat = ~ lat, weight = 1, radius = capacity*30, popup = capacity, fillColor = "red")
+```
+```
