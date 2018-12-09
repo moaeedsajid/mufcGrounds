@@ -1,6 +1,6 @@
 ---
-title: "Manchester United Grounds"
-date: "December 2018"
+title: "A History of MUFC Grounds"
+date: " 9th December 2018"
 output: html_document
 ---
 
@@ -11,12 +11,12 @@ library(leaflet)
 
 ***
 
-Not another map,  What will this tell me about what is probably the biggest football club in the world?    
-  
+Welcome to a quick historical tour of the grounds of the most famous football club in the world.
+
 1. The location and name of every ground used by the club  
 2. Circles representing the relative capcaity at each ground 
-3. Click each icon to learn more about each of the grounds  
-4. Most importantly a link to the online shop so you can spoil yourself or a loved one  
+3. Click each icon to learn more about each venue  
+4. And last but not least a link to the official online store
 
 ***
 
